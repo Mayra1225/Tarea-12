@@ -1,17 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace DesignPatterns.Models
+﻿namespace DesignPatterns.Models
 {
     public class Car : Vehicle
     {
-        public override int Tires { get => 4; }
 
-        public Car(string color, string brand, string model) : base(color, brand, model)
+        public override int Tires => 4;
+
+
+        public Car(
+            string color,
+            string brand,
+            string model,
+            int year = 2026)
+
+            : base(
+                  color,
+                  brand,
+                  model,
+                  year)
         {
 
         }
+
     }
 }

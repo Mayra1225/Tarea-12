@@ -2,7 +2,7 @@
 
 namespace DesignPatterns.FactoryMethods
 {
-    public class FordEscapeFactory : CarFactory
+    public class FordMustangFactory : CarFactory
     {
 
         public override Car Create()
@@ -11,7 +11,7 @@ namespace DesignPatterns.FactoryMethods
             return new Car(
                 color: "Red",
                 brand: "Ford",
-                model: "Escape",
+                model: "Mustang",
                 year: 2026
             );
 

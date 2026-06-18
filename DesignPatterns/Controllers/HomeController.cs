@@ -26,15 +26,31 @@ namespace DesignPatterns.Controllers
 
         public CarFactory chooseFactory(string model)
         {
+
             switch (model)
             {
+
                 case "Mustang":
+
                     return new FordMustangFactory();
+
+
+                case "Explorer":
+
+                    return new FordExplorerFactory();
+
+
                 case "Escape":
+
                     return new FordEscapeFactory();
+
+
                 default:
+
                     throw new Exception("Model not found");
+
             }
+
         }
 
         public IActionResult Index()
@@ -50,20 +66,29 @@ namespace DesignPatterns.Controllers
         [HttpGet]
         public IActionResult AddMustang()
         {
-            var carBuilder = new CarBuilder();
-            var newCar = carBuilder.setColor("asdasd")
-                .setBrand("adsa")
-                .Build();
 
-            _vehicleRepository.AddVehicle(new Car("red","Ford","Mustang"));
+            CarFactory factory = chooseFactory("Mustang");
+
+            var car = factory.Create();
+
+            _vehicleRepository.AddVehicle(car);
+
             return Redirect("/");
+
         }
 
         [HttpGet]
         public IActionResult AddExplorer()
         {
-            _vehicleRepository.AddVehicle(new Car("red", "Ford", "Explorer"));
+
+            CarFactory factory = chooseFactory("Explorer");
+
+            var car = factory.Create();
+
+            _vehicleRepository.AddVehicle(car);
+
             return Redirect("/");
+
         }
 
         [HttpGet]
